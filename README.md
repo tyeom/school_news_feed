@@ -99,6 +99,7 @@ Refer to APIs specification description
 - [x] 학교 소식 조회
 - [x] 학교별 소식 조회
 - [x] 학교 소식 수정
+- [x] 학교 소식 삭제
 
 ``구독``
 - [x] 학교 구독
