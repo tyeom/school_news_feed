@@ -63,6 +63,8 @@ class NewsClass {
 			throw new APIError('소식을 찾을 수 없음', httpStatus.NOT_FOUND);
 		}
 		
+        // 소식 업데이트시 해당 학교 id 그대로 사용 [다른 학교의 소식으로 업데이트 불가 처리]
+        body.school = news.school;
 		Object.assign(news, body);
 		return await news.save();
 	}
