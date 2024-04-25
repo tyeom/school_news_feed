@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import moment from 'moment';
 import config from '~/config/config';
 import APIError from '~/helpers/apiError';
@@ -23,6 +22,8 @@ export const generateAuthTokens = async (user) => {
 		algorithm: 'HS256'
 	});
 
+    /// 추후 리프래시 토큰 사용시 리프래시 토큰 발급 처리에 있어
+    /// 해당 유저의 액세스 토큰 체크 용도로 DB에 보관
 	await Token.saveToken(accessToken, user.id, accessTokenExpires.format());
 
 	return {

@@ -4,11 +4,6 @@ import app from './app';
 import initialData from './config/initialData';
 import logger from './config/logger';
 
-const fs = require('fs');
-// 개인키 로드
-//const privateKey = fs.readFileSync('D:/Source/school_news_feed/storage/id_rsa');
-//console.log(Buffer.from(privateKey).toString('base64'));
-
 let server;
 
 // Mongoose DB
@@ -80,3 +75,12 @@ process.on('SIGTERM', () => {
 		server.close();
 	}
 });
+
+// 통합 테스트에서 supertest 패키지 사용 용도
+export const serverClose = () => {
+    server.close();
+};
+
+// 통합 테스트에서 supertest 패키지 사용 용도
+exports.server = app;
+exports.serverClose = serverClose;

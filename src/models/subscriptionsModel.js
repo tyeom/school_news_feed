@@ -23,14 +23,26 @@ const subscriptionsSchema = mongoose.Schema(
 					type: Boolean,
 					required: true,
 				},
-				// 구독한 날짜 [이 시점부터 학교 소식을 받아온다.]
-				subscribeAt: {
-					type: Date
-				},
-				// 구독 해지한 날짜 [해지 날짜가 있다면 이 시점 이후는 학교 소식을 받아오지 않는다.]
-				unSubscribeAt: {
-					type: Date
-				}
+
+				/// * 구독 날짜를 히스토리로 관리 하는 이유 *
+				/// 구독(subscriptions) 스키마는 학교(school) 스키마의 Id를 참조해서
+				/// 구독 날짜 이후의 해당 학교의 소식(news) 데이터를 조회한다.
+				/// 구독, 구독 취소, 구독을 다시 하는 경우
+				/// [A] 구독 <--> 구독 취소 / [B] 구독 <--> 구독 취소 [A]와 [B] 구독 기간중 등록된 학교 소식은 계속해서 조회할 수 있도록 구독 날짜를 이력으로 관리 한다.
+
+				// 구독 날짜 이력
+				subscribeHistory: [
+					{
+						// 구독한 날짜
+						subscribeAt: {
+							type: Date
+						},
+						// 구독 해지한 날짜
+						unSubscribeAt: {
+							type: Date
+						}
+					}
+				],
 			},
 		],
 	},
@@ -63,8 +75,10 @@ class SubscriptionsClass {
 				"school": {
 					"schoolId": schoolId,
 					"subscribe": true,
-					"subscribeAt": moment(),
-					"unSubscribeAt": null
+					"subscribeHistory": {
+						"subscribeAt": moment(),
+						"unSubscribeAt": null
+					}
 				}
 			}
 			const newSubscribe = await this.create(subscribeInfo);
@@ -80,8 +94,12 @@ class SubscriptionsClass {
 				else {
 					// 구독 취소 후 다시 구독 처리
 					subscribeSchool.subscribe = true;
-					subscribeSchool.subscribeAt = moment();
-					subscribeSchool.unSubscribeAt = null;
+					subscribeSchool.subscribeHistory.push(
+						{
+							"subscribeAt": moment(),
+							"unSubscribeAt": null
+						}
+					)
 				}
 			}
 			else {
@@ -90,8 +108,10 @@ class SubscriptionsClass {
 					{
 						"schoolId": schoolId,
 						"subscribe": true,
-						"subscribeAt": moment(),
-						"unSubscribeAt": null
+						"subscribeHistory": {
+							"subscribeAt": moment(),
+							"unSubscribeAt": null
+						}
 					}
 				);
 			}
@@ -113,8 +133,9 @@ class SubscriptionsClass {
 			if (subscribeSchool) {
 				if(subscribeSchool.subscribe) {
 					subscribeSchool.subscribe = false;
-					subscribeSchool.subscribeAt = null;
-					subscribeSchool.unSubscribeAt = moment();
+					// 구독 날짜 이력에서 마지막 이력
+					const subscribeHistory = subscribeSchool.subscribeHistory.findLast( p => p );
+					subscribeHistory.unSubscribeAt = moment();
 				}
 				else {
 					throw new APIError('해당 학교는 구독중 아님', httpStatus.BAD_REQUEST);
