@@ -86,6 +86,7 @@ src\
  |--services\       # Business logic
  |--validations\    # Request data validation schemas
  |--index.js        # App entry point
+test\               # integration test (jest, supertest)
 ```
 
 Refer to APIs specification description
