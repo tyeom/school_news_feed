@@ -10,6 +10,7 @@ School News Feed Subscription Backend Implementation (Node.js Express)
 -
 - IDE : Visual Source Code
 - Language : Javascript (Node.js)
+- Platform : Node.js v21.7.3
 - Databse : MongoDB
 
 ```
@@ -33,6 +34,11 @@ Set the environment variables:
 
 Commands
 -
+Package install:
+```
+npm install
+```
+
 Running in development:
 ```
 npm run start
