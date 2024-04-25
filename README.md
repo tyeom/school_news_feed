@@ -1,5 +1,6 @@
 ## School News Feed
-학교 뉴스 피드 구독 백앤드 구현 (Node.js Express)
+학교 뉴스 피드 구독 백앤드 구현 (Node.js Express)<br/>
+School News Feed Subscription Backend Implementation (Node.js Express)
 
 ***
 
@@ -9,6 +10,12 @@
 -
 - IDE : Visual Source Code
 - Language : Javascript (Node.js)
+- Databse : MongoDB
+
+```
+MongoDB가 설치되어 있어야 합니다. (You must have MongoDB installed.)
+https://www.mongodb.com
+```
 
 Manual Installation
 -
@@ -35,9 +42,6 @@ Running in production:
 ```
 # build
 npm run build
-
-# start
-npm run prod
 ```
 
 Environment Variables
@@ -80,9 +84,9 @@ src\
 
 Refer to APIs specification description
 -
-- [API Endpoints](https://arooong.notion.site/API-cd65a7f7c2e54bd69bacfa9b6fd3422c?pvs=4)
+- [API Endpoints (link : Notion)](https://arooong.notion.site/API-cd65a7f7c2e54bd69bacfa9b6fd3422c?pvs=4)
 
-✅ 제공 기능
+✅ Features
 -
 
 ``인증 관련``
