@@ -44,6 +44,11 @@ Running in development:
 npm run start
 ```
 
+integration test:
+```
+npm test
+```
+
 Running in production:
 ```
 # build
