@@ -63,8 +63,8 @@ export const getNews = async (schoolId, userId) => {
         if(schoolNews.length > 0)
             /// unshift : 기존 요소를 우측으로 이동시키기에 시간 복잡도 O(n)으로 데이터가 많은 경우 성능 저하로
             /// 추후 페이징으로 요청 할 수 있도록 개선하고 정렬은 프론드앤드 에서 처리 하도록 하는 것이 좋다.
-            //subscribeNews.unshift(schoolNews);
-            subscribeNews.push(schoolNews);
+            subscribeNews.unshift(schoolNews);
+            //subscribeNews.push(schoolNews);
 
     }
     
