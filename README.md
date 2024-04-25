@@ -44,7 +44,7 @@ Running in development:
 npm run start
 ```
 
-integration test:
+Running in integration test:
 ```
 npm test
 ```
