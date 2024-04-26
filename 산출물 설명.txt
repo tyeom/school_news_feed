@@ -5,8 +5,6 @@ Node.js Express 패키지를 사용하여 웹 백앤드 Restful API 형태로 �
 
 자세한 구동 방법 및 확인 절차는 git README.md 파일에 설명 되어 있습니다.
 
-추가로, 상세 API 명세서 설명은 https://arooong.notion.site/API-cd65a7f7c2e54bd69bacfa9b6fd3422c 웹페이지에서 확인 가능 합니다.
-
 
 
 기능 설명
@@ -32,8 +30,3 @@ Node.js Express 패키지를 사용하여 웹 백앤드 Restful API 형태로 �
 
 구현된 상세 API 명세서 문서는 아래 웹 페이지에서 확인 가능 합니다.
 	- API 명세서 : https://arooong.notion.site/API-cd65a7f7c2e54bd69bacfa9b6fd3422c
-
-
-
-산출물 결과 및 구동 확인 방법
-	- https://github.com/tyeom/school_news_feed
