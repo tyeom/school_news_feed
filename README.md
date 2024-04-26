@@ -9,8 +9,9 @@ School News Feed Subscription Backend Implementation (Node.js Express)
 🛠️ Development Env
 -
 - IDE : Visual Source Code
-- Language : Javascript (Node.js)
+- Language : Javascript
 - Platform : Node.js v21.7.3
+- Web Framework : Express
 - Databse : MongoDB
 
 ```
