@@ -46,7 +46,7 @@ it("POST /auth/signin - 관리자 로그인, 상태코드: 200", async () => {
     const res = await request(server).post('/api/auth/signin').send(
         {
             "userName": "admin",
-            "password": "1234"
+            "password": "123"
         });
         
     // 예상 200
